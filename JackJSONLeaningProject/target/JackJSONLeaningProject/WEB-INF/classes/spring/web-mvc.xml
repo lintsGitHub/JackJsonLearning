@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--启用注解扫描-->
+    <context:component-scan base-package="priv.lint.contoller"/>
+
+    <!--启用 mvc 的常用注解-->
+    <mvc:annotation-driven>
+        <!--<mvc:message-converters register-defaults="true">-->
+            <!--&lt;!&ndash;设置全局的字符编码&ndash;&gt;-->
+            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+                <!--<constructor-arg value="UTF-8" />-->
+            <!--</bean>-->
+            <!--&lt;!&ndash;-->
+            <!--对json的一些设置-->
+            <!--对此 ， 我们要尝试通过一些写这个框架的逻辑来尝试读写代码-->
+            <!--这样我们就更了解这个框架了-->
+            <!--对待以后要学的一些新型框架我们就可以快速上手-->
+            <!--&ndash;&gt;-->
+            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+                <!--<property name="objectMapper">-->
+                    <!--<bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">-->
+                        <!--<property name="failOnEmptyBeans" value="false"/>-->
+                        <!--<property name="dateFormat">-->
+                            <!--<bean class="java.text.SimpleDateFormat" >-->
+                                 <!--<constructor-arg value="yyyy&#45;&#45;MM&#45;&#45;dd"/>-->
+                            <!--</bean>-->
+                        <!--</property>-->
+                    <!--</bean>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:message-converters>-->
+    </mvc:annotation-driven>
+
+
+
+    <!--将所有的静态资源交还 Servlet 处理-->
+    <mvc:default-servlet-handler/>
+
+
+
+    <!--配置返回页面-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+</beans>
